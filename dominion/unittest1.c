@@ -19,15 +19,18 @@ int main(int argc, char* argv[]){
     srand(time(NULL));
 
     int ret;
+    int supplyPos = rand()%5;
     struct gameState *state = malloc(sizeof(struct gameState));
     state->whoseTurn = 0;
+    state->numBuys = rand()%2;
+    state->coins = rand()%15;
+    state->phase = 0;
 
+    ret = buyCard(supplyPos, state);
 
+    assert(ret == 0);
 
-
-
-
-
+    fprintf(stdout, "Test passed\n");
 
     return 0;
 
