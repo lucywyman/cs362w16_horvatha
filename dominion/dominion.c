@@ -824,7 +824,6 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	}
 
       gainCard(choice2, state, 0, currentPlayer);
-
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
 
@@ -1337,7 +1336,7 @@ int updateCoins(int player, struct gameState *state, int bonus)
 
   //add bonus
   state->coins += bonus;
-
+  
   return 0;
 }
 
