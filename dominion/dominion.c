@@ -236,12 +236,18 @@ int playCard(int handPos, int choice1, int choice2, int choice3, struct gameStat
   //check if it is the right phase
   if (state->phase != 0)
     {
+      if(DEBUG){
+          fprintf(stderr, "This is where we're dying in phase check\n");
+      }
       return -1;
     }
 	
   //check if player has enough actions
   if ( state->numActions < 1 )
     {
+      if(DEBUG){
+         fprintf(stderr, "We're dying in numActions\n");
+      }
       return -1;
     }
 	
@@ -251,12 +257,19 @@ int playCard(int handPos, int choice1, int choice2, int choice3, struct gameStat
   //check if selected card is an action
   if ( card < adventurer || card > treasure_map )
     {
+      if(DEBUG){
+        fprintf(stderr, "this is where we die\n");
+	fprintf(stderr, "card: %d\n", card);
+      }
       return -1;
     }
 	
   //play card
   if ( cardEffect(card, choice1, choice2, choice3, state, handPos, &coin_bonus) < 0 )
-    {
+    { 
+      if(DEBUG){
+          fprintf(stderr, "we died in cardEffect\n");
+      }
       return -1;
     }
 	

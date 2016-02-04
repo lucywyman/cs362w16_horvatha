@@ -27,8 +27,8 @@ int main(int argc, char* argv[]){
     initializeGame(2, k, seed, state);
     
     state->whoseTurn = 0;
-    state->numBuys =rand()%2+1;
-    state->coins = rand()%10 + 1;
+    state->numBuys = 1;
+    state->coins = 8;
     state->phase = 0;
 
     ret = buyCard(supplyPos, state);
