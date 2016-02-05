@@ -1,0 +1,7 @@
+After running gcov, I found that 34.9% of the code was covered through my 8 tests.
+This means that the majority of the code was not covered, which suggests that either my test cases
+need to be more robust and fully cover each function/card case, or there simply needs to be more unit tests.
+Some lines of code weren't covered simply because there was error checking that my unit test didn't cover (such as
+in buyCard, if the player doesn't have enough buys they cannot buy a card, resulting in the code going down an error
+path). In the future, I would add more conditions to my unit tests to ensure that not only is all code covered, the
+conditions checking the state of the game are working properly to prevent stupid errors resulting in buggy code.
