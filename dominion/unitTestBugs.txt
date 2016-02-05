@@ -1,0 +1,7 @@
+Writing unittest1.c was probably the most difficult unit test, as it required me to
+gain a more complete understanding of the way that dominion.c was structured and how these functions were being called
+(either between functions in dominion.c or in the actual playdom.c program). As there is a lack of documentation or comments explaining what the functions
+do or what the parameters mean. After reading through the code and tracing through function calls, I was able to write a unit test that tested the base case of the function
+correctly. unittest2.c was a bit easier, but required debugging when running into an error that there wasn't enough buys, requiring me to change the 
+buyCount property of the gameState struct. This assignment required me to create a correct mental model of the way that the game
+is run and the way that various aspects of the game are treated within the gameState struct.
