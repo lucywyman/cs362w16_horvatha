@@ -65,7 +65,7 @@ card3: cardtest3.c dominion.c rngs.c
 card4: cardtest4.c dominion.c rngs.c
 	gcc -fprofile-arcs -ftest-coverage -Wall -std=c99 dominion.c cardtest4.c rngs.c -o cardtest4 -lm -g
 
-unittrestresults.out: unit1 unit2 unit3 unit4 card1 card2 card3 card4 dominion.c
+unittestresults.out: unit1 unit2 unit3 unit4 card1 card2 card3 card4 dominion.c
 	./unittest1 &> unittestresult.out
 	./unittest2 >> unittestresult.out
 	./unittest3 >> unittestresult.out
