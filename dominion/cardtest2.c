@@ -3,9 +3,12 @@
 #include "dominion.h"
 #include <assert.h>
 #include "dominion_helpers.h"
+#include <time.h>
 
 int main(int argc, char* argv[]){
 
+
+    srand(time(NULL));
 
     int i, ret, handPos, handNum;
     struct gameState *state = malloc(sizeof(struct gameState));
@@ -29,7 +32,6 @@ int main(int argc, char* argv[]){
     handNum = state->handCount[0] + 2;
     ret = cardEffect(smithy, 0, 0, 0, state, handPos, 0);
     assert(ret == 0);
-    //fprintf(stdout, "handNum: %d, state->handCount[0]: %d\n", handNum, state->handCount[0]);
     assert(handNum == state->handCount[0]);
 
     fprintf(stdout, "Tests passed!\n");
