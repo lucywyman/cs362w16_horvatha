@@ -1,0 +1,6 @@
+So I've been trying to make randomtestadventurer.c... Better. It's been a wild ride.
+Since the code was originally written when we were using a different version of dominion.c, there was some cleaning
+up that needed to be done just to make it run "correctly". From there, I seeded rand so it didn't result in the same output every time.
+However, there's been a large struggle trying to get the code from breaking every single time it runs. Often times we are caught in an infinite loop
+when trying to draw a card as there isn't a copper, gold, or silver in the user's hand. This suggests either an oversight in the implementation of
+case adventurer in the cardEffect function or else modifications need to be made to the test suite. As it's day 1, I'm going to sleep on it.

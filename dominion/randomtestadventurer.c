@@ -1,9 +1,11 @@
 #include "dominion.h"
+#include "dominion_helpers.h"
 #include "rngs.h"
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <time.h>
 
 #define MAX_TESTS 12
 
@@ -19,6 +21,8 @@ int main() {
 	  struct gameState state;
 	  struct gameState stat;
 	  struct gameState sta;
+
+	  srand(time(NULL));
 
 	  printf("Running Random Adventurer Test\n");
 
@@ -39,22 +43,35 @@ int main() {
 	   initializeGame(players, k, seed, &state);	//initialize Gamestate 
 
 	   //Initiate valid state variables
-		  state.deckCount[player] = rand() % MAX_DECK; //Pick random deck size out of MAX DECK size
-		  state.discardCount[player] = rand() % MAX_DECK;
-		  state.handCount[player] = rand() % MAX_HAND;
+	        for(j = 0; j < players; j++){
+		    state.deckCount[j] = rand() % MAX_DECK + 2; //Pick random deck size out of MAX DECK size
+		  state.discardCount[j] = rand() % MAX_DECK;
+		  state.handCount[j] = rand() % MAX_HAND;
 
 
 		  //Copy state variables
-		  handCount = state.handCount[player];
-		  deckCount = state.deckCount[player];
+		  handCount = state.handCount[j];
+		  deckCount = state.deckCount[j];
 
 		  //1 in 3 chance of making empty deck for coverage
 		  if (seed % 3 == 0) {
 
-			state.deckCount[player] = 0;
+			state.deckCount[j] = 0;
 		  }
-		  cardEffect(adventurer, 1, 1, 1, &state);		//Run adventurer card
+		 // if(seed % 10 == 0){
+                        state.deck[j][deckCount] = copper;
+		  //}
+		  //if(seed % 11 == 0){
+                        state.deck[j][deckCount - 1] = silver;
+		  //}
+		  //if(seed % 12 == 0){
+                        state.deck[j][deckCount - 2] = gold;
+		  //}
+		}
+		  cardEffect(adventurer, 1, 1, 1, &state, 0, 0);		//Run adventurer card
 	  }
+
+	  fprintf(stdout, "made it through first loop\n");
 	  
 	   for (i = 0; i < MAX_TESTS; i++) {
 
@@ -64,23 +81,27 @@ int main() {
 		  initializeGame(players, k, seed, &stat);	//initialize Gamestate
 
 		  //Initiate valid state variables
-		  stat.deckCount[player] = rand() % MAX_DECK; //Pick random deck size out of MAX DECK size
-		  stat.discardCount[player] = rand() % MAX_DECK;
-		  stat.handCount[player] = rand() % MAX_HAND;
+		  for(j = 0; j < players; j++){
+		      stat.deckCount[j] = rand() % MAX_DECK; //Pick random deck size out of MAX DECK size
+		      stat.discardCount[j] = rand() % MAX_DECK;
+		      stat.handCount[j] = rand() % MAX_HAND;
 
 
 		  //Copy state variables
-		  handCount = stat.handCount[player];
-		  deckCount = stat.deckCount[player];
+		      handCount = stat.handCount[j];
+		      deckCount = stat.deckCount[j];
 
 		  //1 in 3 chance of making empty deck for coverage
-		  if (seed % 3 == 0) {
+		      if (seed % 3 == 0) {
 
-			stat.deckCount[player] = 0;
+			stat.deckCount[j] = 0;
+		      }
 		  }
 
-		  cardEffect(adventurer, 1, 1, 1, &stat);		//Run adventurer card
+		  cardEffect(adventurer, 1, 1, 1, &stat, 0, 0);		//Run adventurer card
 	  }
+
+	   fprintf(stdout, "made it through second loop\n");
 
 	   for (i = 0; i < MAX_TESTS; i++) {
 
@@ -88,23 +109,24 @@ int main() {
 		  seed = rand();		//pick random seed
 		
 		  initializeGame(players, k, seed, &sta);	//initialize Gamestate
-
+                  for(j = 0; j < players; j++){
 		  //Initiate valid state variables
-		  sta.deckCount[player] = rand() % MAX_DECK; //Pick random deck size out of MAX DECK size
-		  sta.discardCount[player] = rand() % MAX_DECK;
-		  sta.handCount[player] = rand() % MAX_HAND;
+		      sta.deckCount[j] = rand() % MAX_DECK; //Pick random deck size out of MAX DECK size
+		      sta.discardCount[j] = rand() % MAX_DECK;
+		      sta.handCount[j] = rand() % MAX_HAND;
 
 
 		  //Copy state variables
-		  handCount = sta.handCount[player];
-		  deckCount = sta.deckCount[player];
+		      handCount = sta.handCount[j];
+		      deckCount = sta.deckCount[j];
 
 		  //1 in 3 chance of making empty deck for coverage
-		  if (seed % 3 == 0) {
+		      if (seed % 3 == 0) {
 
-			sta.deckCount[player] = 0;
+			sta.deckCount[j] = 0;
+		      }
 		  }
-		  cardEffect(adventurer, 1, 1, 1, &sta);		//Run adventurer card
+		  cardEffect(adventurer, 1, 1, 1, &sta, 0, 0);		//Run adventurer card
 
 	   }
 
