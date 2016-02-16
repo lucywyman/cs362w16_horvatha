@@ -1,0 +1,9 @@
+Bug report about minksc code
+
+Your game segmentation faults when the following is passed to cardeffect
+
+(adventurer, 0, 0, 0, state, handpos, 0)
+Where handpos = 163
+and state contained the following
+state->hand 281 : state->deck 22 :state->discard 437 : state->coins 0
+

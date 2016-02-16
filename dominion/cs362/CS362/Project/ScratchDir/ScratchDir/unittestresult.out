@@ -1,0 +1,72 @@
+
+Unit test 1 for the getCost function in dominion.c 
+	Test passed with input i: -5, and return value from getCost: -1 
+	Test passed with input i: -4, and return value from getCost: -1 
+	Test passed with input i: -3, and return value from getCost: -1 
+	Test passed with input i: -2, and return value from getCost: -1 
+	Test passed with input i: -1, and return value from getCost: -1 
+	Test passed with input i: 0, and return value from getCost: 0 
+	Test passed with input i: 1, and return value from getCost: 2 
+	Test passed with input i: 2, and return value from getCost: 5 
+	Test passed with input i: 3, and return value from getCost: 8 
+	Test passed with input i: 4, and return value from getCost: 0 
+	Test passed with input i: 5, and return value from getCost: 3 
+	Test passed with input i: 6, and return value from getCost: 6 
+	Test passed with input i: 7, and return value from getCost: 6 
+	Test passed with input i: 8, and return value from getCost: 5 
+	Test passed with input i: 9, and return value from getCost: 4 
+	Test passed with input i: 10, and return value from getCost: 4 
+	Test passed with input i: 11, and return value from getCost: 5 
+	Test passed with input i: 12, and return value from getCost: 4 
+	Test passed with input i: 13, and return value from getCost: 4 
+	Test passed with input i: 14, and return value from getCost: 3 
+	Test passed with input i: 15, and return value from getCost: 4 
+	Test passed with input i: 16, and return value from getCost: 3 
+	Test passed with input i: 17, and return value from getCost: 5 
+	Test passed with input i: 18, and return value from getCost: 3 
+	Test passed with input i: 19, and return value from getCost: 5 
+	Test passed with input i: 20, and return value from getCost: 3 
+	Test passed with input i: 21, and return value from getCost: 4 
+	Test passed with input i: 22, and return value from getCost: 2 
+	Test passed with input i: 23, and return value from getCost: 5 
+	Test passed with input i: 24, and return value from getCost: 4 
+	Test passed with input i: 25, and return value from getCost: 4 
+	Test passed with input i: 26, and return value from getCost: 4 
+	Test passed with input i: 27, and return value from getCost: -1 
+	Test passed with input i: 28, and return value from getCost: -1 
+	Test passed with input i: 29, and return value from getCost: -1 
+All tests passed!
+
+Unit test 2 for the updateCoins function in dominion.c 
+	Expected coin Count without bonus: 782, actual coin Count 782 
+	Expected coin Count with bonus of 1: 783, actual coin Count 783 
+	Expected coin Count without bonus: 3, actual coin Count 3 
+	Expected coin Count with bonus of 1: 4, actual coin Count 4 
+	Expected coin Count without bonus: 832, actual coin Count 832 
+	Expected coin Count with bonus of 1: 833, actual coin Count 833 
+	Expected coin Count without bonus: 772, actual coin Count 772 
+	Expected coin Count with bonus of 1: 773, actual coin Count 773 
+All tests passed!
+
+Unit test 3 for the isGameOver function in dominion.c 
+	Test passed! The return value of isGameOver was 1 when the province count was set to zero
+	Test passed! The return value of isGameOver was 0 when all the supply counts were greater than 0
+	Now running 1000 tests with 3 random supply stacks being empty 
+All 1000 test passed 
+
+Unit test 4 for the fullDeckCount function in dominion.c 
+All test passed! 
+
+Unit test 5 for smithy card in dominion.c 
+All test passed! In all cases the player drew three cards and discarded smithy
+
+Unit test 6 for council room card in dominion.c 
+All tests passed! 
+
+Unit test 7 for garden in dominion.c 
+Test Passed! Card Effect returned -1 for gardens
+
+File 'dominion.c'
+No executable lines
+dominion.c:creating 'dominion.c.gcov'
+

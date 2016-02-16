@@ -4,3 +4,15 @@ up that needed to be done just to make it run "correctly". From there, I seeded 
 However, there's been a large struggle trying to get the code from breaking every single time it runs. Often times we are caught in an infinite loop
 when trying to draw a card as there isn't a copper, gold, or silver in the user's hand. This suggests either an oversight in the implementation of
 case adventurer in the cardEffect function or else modifications need to be made to the test suite. As it's day 1, I'm going to sleep on it.
+
+Now that I'm doing this on the server, I am capable of running the program semi-consistently. My baseline code coverage pre-improvement for randomcardtest.c is
+24.42%. After commenting out the last two for loops, my coverage stayed about the same. I refactored the code to include an oracle and modified the state struct myself to ensure pure randomness within the variables. However, cutting out the call to initializeGame lowered my code coverage, but I did cover every line within the "case adventurer" portion
+of the cardEffect function.
+
+
+As for the randomtestcard.c file, I am testing "village", which requires the player to gain two actions, draw a card, then discard a card. There's a lot of variability
+between executions. I added oracles to test that the state has changed from numAction to numAction plus 2. I also tried adding oracles to determine whether
+the deckCount decremented by 1 post-execution and that the discardCount decremented as well, but, for some reason, despite most executions resulting in
+these asserts passing, sometimes one of these state variables would randomly be set to 0, either during the call to initializeGame or during the cardEffect call, resulting
+in comparing the before and after states to match the pattern of one decrementing not passing. It's really weird. Also, sometimes the program segfaults after 1 call.
+Just rerun it. It's fine, trust me. Code coverage is at 24.42%. 

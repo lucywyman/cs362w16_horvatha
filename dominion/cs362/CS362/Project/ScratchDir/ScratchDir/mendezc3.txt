@@ -1,0 +1,17 @@
+There is an issue with your steward card, when trying to draw from a full deck and the discard isn't reset. 
+
+Upon calling cardeffect with the following:
+
+(steward, 1, 0, 0, state, handPos, 0)
+With handpos = 323
+And state containing the following
+
+state->hand 498 : state->deck 0 : state->discard 476
+ After drawing we would expect 
+	Hand 499 : Deck 474 : Discard 1
+	With the hand having drawn two and discarded 1, the deck being reshuffled
+and drawn from and the adventurer card but instead the result state is set to
+
+state->hand 495 : state->deck 0 : state->discard 476
+
+With the hand having lost three cards, the discard and deck staying the same

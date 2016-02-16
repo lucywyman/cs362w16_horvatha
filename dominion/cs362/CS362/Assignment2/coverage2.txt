@@ -1,0 +1,1 @@
+Found that I had 100% coverage for unit tests 1-4 but for card tests had 100% of the function they were testing but in the case of council room and smithy, they both call drawcard and I did not have any testing coverage for drawcard.

@@ -1,0 +1,25 @@
+Unittest1:
+	No bugs found in the getCost function
+
+Unittest2:
+	No bugs found in updateCoins function	
+Unittest3:
+	isGameOver function only checks supply cards 0-24 not 25 and 26. This
+makes it so that if you run out of seahag or treasure maps and two other
+supply stacks, the game still won't end.
+
+Unittest4:
+	No bugs found in fullDeckCount function
+
+Cardtest1:
+	No bugs found in smithy card
+
+Cardtest2:
+	No bugs found in council room card
+
+Cardtest3:
+	No bugs found in gardens card
+
+Cardtest4:
+	No bugs found in outpost card
+

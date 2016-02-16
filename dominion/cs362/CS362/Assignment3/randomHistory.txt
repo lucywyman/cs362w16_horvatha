@@ -1,0 +1,30 @@
+Once upon a time, I wrote a random test for the adventurer and steward cards in dominion.
+
+randomStewardTest.c
+	In the random steward test, I generated a random state and then based on
+that, called card effects either with the choice to draw two cards, trash two
+cards or add two coins. Upon cardeffects return I used asserts to see if the
+state reached the expected value (check that the coins have increased by two
+for example). 
+
+	I encountered the following errors: 
+		Failed assert - state->deckCount and state->handCount will
+occasionally fail asserts. In particular had state->handCount fail assert when
+it went from 3 cards to 21 cards after requesting only two draws. Also had
+another case where it went from 18 to -4. Same issues with state->deckCount
+where it would go from 1 to -2. 
+
+randomAdventurerTest.c
+	In the random adventurer test, I generated a random state then called
+cardEffect specifying adventurer as the card, then I checked that the coins
+increased by true(added to the dominion.c file a statement that increments the
+coins by 1 everytime a treasure is drawn) and checked that the cards were
+correctly discarded that were not coins. 
+
+	I encountered the following errors:
+		Seg Fault(received a SIGABRT signal according to gdb) - when the adventurer tried to draw a card from a deck after
+the deck was empty and re-shuffled. The call to drawCard causes the fault.
+This seems to only happen about half the time I make and run this test.  
+
+
+

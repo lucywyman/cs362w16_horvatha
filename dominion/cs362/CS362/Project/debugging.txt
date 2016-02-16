@@ -1,0 +1,14 @@
+Found a seg fault when calling card effect as so:
+
+cardEffect(adventurer, 0, 0, 0, state, handPos, 0);
+where state->hand = 442, state->deck = 29, state->discard = 260, state->coins = 0, and handpos = 351
+
+First I seeded the program so that I could recreate the failing case. I got a slightly different failing case with a seed of 1(when it first crashed I didn't record the seed so I re ran testing with the seed of 1) but the same seg fault
+
+Now that I could recreate it I used gdb to step through it. Using backtrace and stepping through the program I figured out which part of card effect was ausing the seg fault. Tracing the program execution I discovered that it was caused not by card effect but from a call to draw card. 
+
+That wasn't the end of the it though because the part that caused draw card to fail was a call to shuffle.
+
+Once inside this function I used delta debugging to find out which lines were causing the test case to fail(full report in deltadebug.txt) but in short it was the quick sore algorithm. 
+
+It turned out to be a failing case of their quick sort, when passing too large a deck, so I was able to adjust my testing to account for these extreme values (since it does seem a bit extreme to have almost 500 cards in your deck in dominion) and then the error stopped.  

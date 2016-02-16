@@ -1,0 +1,7 @@
+Found bug in your steward card, it never increases the coin count when the choice to select coin count is available.
+
+Test Conditions
+	Called card effect with the parameters (steward, 2, 0, 0, state, handPos, 0);
+	Where state contained 13 coins in the coin field and handPos was 8. After
+card effect the coins were at 13 still instead of at 15 where they should
+be.
