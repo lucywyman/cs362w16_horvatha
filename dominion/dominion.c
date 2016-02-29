@@ -744,6 +744,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	  if (DEBUG){
 	    printf("Cards Left: %d\n", supplyCount(choice1, state));
 	  }
+	  x = 0;
 	}
 	else if (state->coins < getCost(choice1)){
 	  printf("That card is too expensive!\n");

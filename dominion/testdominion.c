@@ -48,14 +48,22 @@ int main(int argc, char* argv[]){
 
 	}
 	for(i = 0; i < numPlayers; i++){
-	    handPos = rand()%numHandCards(state);
-	    if(handPos > 6){
-	        if(playCard(handPos, -1, -1, -1, state) < 0){
+	    if(numHandCards(state) != 0){
+	        handPos = rand()%numHandCards(state);
+	        printf("DEBUG: value of handPos is: %d\n", handPos);
+	    }
+	    else{
+	        endTurn(state);
+	    }
+	    if(handCard(handPos, state) > 6){
+	        card = handCard(handPos, state);
+	        printf("DEBUG: in first if before playCard and we're going to play %d\n", card);
+	        if(playCard(handPos, -1, -1, -1, state) < 0){ // try hardcoding certain playCard calls dependent upon the type of card
                     printf("DEBUG: card was unable to be played\n");
 	        }
 	        else{
 		    card = handCard(handPos, state);
-                    printf("Player %d played card %d\n", i, card);
+                    printf("Player %d played card %d\n", i + 1, card);
 	        }
 
 	    }
@@ -78,7 +86,7 @@ int main(int argc, char* argv[]){
                 printf("Player %d bought province\n", i+1);
                 buyCard(province, state);
 	    }
-	    else{
+	    else if(money > 0){
 		card = k[rand()%10];
                 //printf("Player %d bought %d\n", i+1, card);
 		if(buyCard(card, state) < 0){
@@ -87,6 +95,10 @@ int main(int argc, char* argv[]){
 		else{
                     printf("Player %d bought %d\n", i+1, card);
 		}
+	    }
+	    else{
+	        buyCard(copper, state);
+		printf("Player %d bought copper\n", i+1);
 	    }
 	    printf("End player %d's turn\n", i+1);
 	    endTurn(state);
