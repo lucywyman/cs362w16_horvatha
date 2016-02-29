@@ -8,6 +8,7 @@
 int main(int argc, char* argv[]){
 
     struct gameState *state;
+    state = malloc(sizeof(struct gameState));
     srand(time(NULL));
     int k[10];
     int seed = rand();

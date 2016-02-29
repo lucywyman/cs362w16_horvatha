@@ -22,6 +22,8 @@ runRandomCard: randomcard
 	gcov dominion.c >> randomtestcard.out
 	cat dominion.c.gcov >> randomtestcard.out
 
+testdominion: dominion.o testdominion.c
+	gcc -o testdominion testdominion.c -g dominion.o rngs.o $(CFLAGS)
 
 playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
