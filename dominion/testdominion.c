@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
     srand(time(NULL));
     int k[10];
     int seed = rand();
-    int i, j, temp, numPlayers, money, handPos, card;
+    int i, j, temp, numPlayers, money, moneyPos, handPos, card;
     for(i = 0; i < 10; ){
         temp = rand()%(treasure_map + 1 - 7) + 7;
 	for(j = 0; j < 10; j++){
@@ -38,6 +38,7 @@ int main(int argc, char* argv[]){
         for(i = 0; i < numHandCards(state); i++){
             if((handCard(i, state)) == copper){
                 money++;
+		moneyPos = i;
             }
 	    else if((handCard(i, state)) == silver){
                 money += 2;
@@ -57,6 +58,38 @@ int main(int argc, char* argv[]){
 	    }
 	    if(handCard(handPos, state) > 6){
 	        card = handCard(handPos, state);
+		switch(card){
+		     case feast:
+                         playCard(handPos, duchy, -1, -1, state);
+			 break;
+		     case mine:
+			 playCard(handPos, moneyPos, silver, -1, state);
+			 break;
+		     case remodel:
+			 playCard(handPos, 0, -1, -1, state);
+			 break;
+		     case baron:
+			 playCard(handPos, 1, -1, -1, state);
+			 break;
+		     case minion:
+			 playCard(handPos, 1, -1, -1, state);
+			 break;
+		     case steward:
+			 playCard(handPos, 1, -1, -1, state);
+			 break;
+		     case ambassador:
+			 playCard(handPos, 0, 2, -1, state);
+			 break;
+		     case embargo:
+			 playCard(handPos, k[rand()%10], -1, -1, state);
+			 break;
+		     case salvager:
+			 playCard(handPos, rand()%numHandCards(state), -1, -1, state);
+			 break;
+		     default:
+			 //playCard(handPos, -1, -1, -1, state);
+			 break;
+		}
 	        printf("DEBUG: in first if before playCard and we're going to play %d\n", card);
 	        if(playCard(handPos, -1, -1, -1, state) < 0){ // try hardcoding certain playCard calls dependent upon the type of card
                     printf("DEBUG: card was unable to be played\n");
@@ -101,6 +134,7 @@ int main(int argc, char* argv[]){
 		printf("Player %d bought copper\n", i+1);
 	    }
 	    printf("End player %d's turn\n", i+1);
+	    
 	    endTurn(state);
 	}
  	
