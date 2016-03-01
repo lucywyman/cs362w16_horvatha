@@ -1,0 +1,7 @@
+I ran my version of dominion.c against Kyle Nichols' version of dominion.c and found only one interesting (to me) difference.
+For some reason, my code coverage for my implementation of dominion.c is 75.7% while my testdominion.c with his implementation
+only reached 66.6% of the code. Other than that, it was rather hard to compare using diff as there was a lot of output and
+due to the random nature of my testdominion.c (random kingdom cards, random number of players, random cards played, etc.) having two similar
+run-throughs of a game of dominion even with just my implementation of dominion.c would result in very different outputs, so comparing
+between my version and Kyle's seemed to not result in many interesting findings. Both files can be found in my directory as
+"testdominion.out" (or "gameResults.out") and "testdominion.out.kyle". The output from diff is also in my directory as "diff.gameResults.out".

@@ -87,17 +87,23 @@ int main(int argc, char* argv[]){
 			 playCard(handPos, rand()%numHandCards(state), -1, -1, state);
 			 break;
 		     default:
-			 //playCard(handPos, -1, -1, -1, state);
+			 if(playCard(handPos, -1, -1, -1, state) < 0){
+			     printf("DEBUG: card was unable to be played\n");
+			 }
+			 else{
+			     card = handCard(handPos, state);
+			     printf("Player %d played card %d\n", i+1, card);
+			 }
 			 break;
 		}
-	        printf("DEBUG: in first if before playCard and we're going to play %d\n", card);
-	        if(playCard(handPos, -1, -1, -1, state) < 0){ // try hardcoding certain playCard calls dependent upon the type of card
+	        //printf("DEBUG: in first if before playCard and we're going to play %d\n", card);
+	        /*if(playCard(handPos, -1, -1, -1, state) < 0){ // try hardcoding certain playCard calls dependent upon the type of card
                     printf("DEBUG: card was unable to be played\n");
 	        }
 	        else{
 		    card = handCard(handPos, state);
                     printf("Player %d played card %d\n", i + 1, card);
-	        }
+	        }*/
 
 	    }
 	    money = 0;
